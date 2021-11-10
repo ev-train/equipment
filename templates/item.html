@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Оборудование{% endblock %}
+
+{% block content %}
+
+    <p>Наименование: {{ item.name }}</p>
+    <p>Серийный номер: {{ item.number }}</p>
+    <p>Идентификатор: {{ item.identifier }}</p>
+    <p>Тип: {{ item_type.name }}</p>
+    <p>Основное средство: {{ main_option.name }}</p>
+    <P>Тип использования: {{ use_type.name }}</P>
+    <p>Офис: {{ office.name }}</p>
+    <p>Документ: {{ item.document }}</p>
+    <p>Дата приобретения: {{ item.purchase_date }}</p>
+    <p>Комментарий: {{ item.comment }}</p>
+    <p>Дата создания: {{ item.created_date }}</p>
+    <a href="{{ url_for('edit', id=item.id) }}">Редактировать</a>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактировать тип{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+  <p><label for="name">Тип оборудования:</label></p>
+  <p><input type="text" id="name" name="name" value="{{ request.form['name'] or itemtype['name'] }}" required></p>
+  <button class="btn btn-outline-success btn-sm" type="submit">Сохранить</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+.item {
+    margin: 15px 0;
+}
+.item > form {
+    display: inline;
+}
+
+.item > a {
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.new-item-form > div{
+    margin: 15px 0;
+}
+
+#old-first {
+    display: none;
+}
+
+#name-sorted {
+    display: none;
+}
+
+#sort-form {
+    margin-bottom: 20px;
+}

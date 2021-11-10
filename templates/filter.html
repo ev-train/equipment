@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <div>Показать оборудование с типом:</div>
+    <ul>
+        {% for el in itemtypes %}
+        <li><a href="{{ url_for('filter', id=el.id) }}">{{ el.name }}</a></li>
+        {% endfor %}
+        <li><a href="{{ url_for('index') }}">Все</a></li>
+    </ul>
+
+    <form id="sort-form" method="post">
+        <div>Выберите метод сортировки:</div>
+        <input type="radio" name="sort" id="newfirst" value="newfirst">
+        <label for="newfirst">По дате (сначала новое)</label><br>
+        <input type="radio" name="sort" id="oldfirst" value="oldfirst">
+        <label for="oldfirst">По дате (сначала старое)</label><br>
+        <input type="radio" name="sort" id="namesorted" value="namesorted">
+        <label for="namesorted">По алфавиту</label><br>
+        <div id="error"></div>
+        <input class="btn btn-outline-success btn-sm" type="submit" name="submit" value="Применить">
+    </form>
+
+    <div id="new-first">
+        <h4>Оборудование (сначала новое):</h4>
+        {% for el in new_first %}
+            {% if el.item_type == id %}
+                <div class="item">
+                    <a href="{{ url_for('item', id=el.id) }}">{{el.name}}</a>
+                    <form action="{{ url_for('edit', id=el.id) }}">
+                        <button role="button" class="btn btn-outline-primary btn-sm">Редактировать</button>
+                    </form>
+                    <form action="{{ url_for('delete', id=el.id) }}" method="post">
+                        <input class="btn btn-outline-danger btn-sm" type="submit" value="Удалить" onclick="return confirm('Вы уверены, что хотите удалить {{el.name}}?');">
+                    </form>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div id="old-first">
+        <h4>Оборудование (сначала старое):</h4>
+        {% for el in old_first %}
+            {% if el.item_type == id %}
+                <div class="item">
+                    <a href="{{ url_for('item', id=el.id) }}">{{el.name}}</a>
+                    <form action="{{ url_for('edit', id=el.id) }}">
+                        <button role="button" class="btn btn-outline-primary btn-sm">Редактировать</button>
+                    </form>
+                    <form action="{{ url_for('delete', id=el.id) }}" method="post">
+                        <input class="btn btn-outline-danger btn-sm" type="submit" value="Удалить" onclick="return confirm('Вы уверены, что хотите удалить {{el.name}}?');">
+                    </form>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div id="name-sorted">
+        <h4>Оборудование (по алфавиту):</h4>
+        {% for el in name_sorted %}
+            {% if el.item_type == id %}
+                <div class="item">
+                    <a href="{{ url_for('item', id=el.id) }}">{{el.name}}</a>
+                    <form action="{{ url_for('edit', id=el.id) }}">
+                        <button role="button" class="btn btn-outline-primary btn-sm">Редактировать</button>
+                    </form>
+                    <form action="{{ url_for('delete', id=el.id) }}" method="post">
+                        <input class="btn btn-outline-danger btn-sm" type="submit" value="Удалить" onclick="return confirm('Вы уверены, что хотите удалить {{el.name}}?');">
+                    </form>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+ {% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Справочник основных средств{% endblock %}
+
+{% block content %}
+
+    <p><a href="{{ url_for('new_option') }}">Добавить новое основное средство</a></p>
+    <p>Основные средства:</p>
+    {% for el in options_list %}
+    <div class="item">
+        {{el.name}}
+        <form action="{{ url_for('edit_option', id=el.id) }}">
+            <button role="button" class="btn btn-outline-primary btn-sm">Редактировать</button>
+        </form>
+        <form action="{{ url_for('delete_option', id=el.id) }}" method="post">
+            <input class="btn btn-outline-danger btn-sm" type="submit" value="Удалить" onclick="return confirm('Вы уверены, что хотите удалить {{el.name}}?');">
+        </form>
+    </div>
+    {% endfor %}
+    
+{% endblock %}

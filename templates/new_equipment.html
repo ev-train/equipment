@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавить оборудование{% endblock %}
+
+{% block content %}
+    <h4>Добавьте новое оборудование:</h4>
+    <form method="POST" class="new-item-form">
+        {{ form.csrf_token }}
+        <div>
+            <span>Наименование:</span>
+            {{ form.name }}
+        </div>
+        <div>
+            <span>Серийный номер:</span>
+            {{ form.number }}
+        </div>
+        <div>
+            <span>Идентификатор: </span>
+            {{ form.identifier }}
+        </div>
+        <div>
+            <span>Тип: </span>
+            {{ form.item_type }}
+        </div>
+        <div>
+            <span>Основное средство: </span>
+            {{ form.main_option }}
+        </div>
+        <div>
+            <span>Тип использования: </span>
+            {{ form.use_type }}
+        </div>
+        <div>
+            <span>Офис: </span>
+            {{ form.office }}
+        </div>
+        <div>
+            <span>Документ: </span>
+            {{ form.document }}
+        </div>
+        <div>
+            <span>Дата приобретения: </span>
+            {{ form.purchase_date }}
+        </div>
+        <div>
+            <span>Комментарий: </span>
+            {{ form.comment }}
+        </div>
+        <div><input class="btn btn-outline-success" type="submit" value="Добавить"></div>
+    </form>
+
+{% endblock %}
