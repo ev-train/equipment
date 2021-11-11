@@ -9,10 +9,12 @@ from datetime import datetime
 
 from wtforms import SelectField, StringField, DateField
 
+import settings
+
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql://username:password@localhost/equipment'
+app.config['SQLALCHEMY_DATABASE_URI']=f'postgresql://{settings.DB_USER}:{settings.DB_PASSWORD}@{settings.DB_HOST}/{settings.DB_NAME}'
 
 db=SQLAlchemy(app)
 migrate = Migrate(app, db)
